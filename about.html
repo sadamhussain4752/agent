@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>About Us – Think Mangoes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+.page-hero{padding:160px 20px 96px;text-align:center;position:relative;overflow:hidden;}
+.page-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 0%,#F5A62320 0%,transparent 70%);}
+.page-hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:800;line-height:1.1;max-width:780px;margin:0 auto 20px;}
+.page-hero p{color:var(--clr-muted);font-size:1.1rem;max-width:560px;margin:0 auto;line-height:1.7;}
+.section{padding:96px 20px;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-tag{display:inline-block;background:var(--clr-accent-dim);color:var(--clr-accent);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:4px;margin-bottom:16px;}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.section-sub{color:var(--clr-muted);font-size:1.05rem;line-height:1.7;}
+.accent{color:var(--clr-accent);}
+
+/* Story */
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.story-quote{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:700;line-height:1.4;color:var(--clr-text);border-left:3px solid var(--clr-accent);padding-left:24px;margin-bottom:28px;}
+.story-body p{color:var(--clr-muted);line-height:1.8;margin-bottom:16px;}
+.story-visual{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:24px;padding:56px 40px;text-align:center;}
+.mango-icon{font-size:5rem;margin-bottom:20px;color:var(--clr-accent);}
+.story-visual h3{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;margin-bottom:12px;}
+.story-visual p{color:var(--clr-muted);font-size:.95rem;line-height:1.7;}
+
+/* Values */
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.value-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:16px;padding:40px 32px;text-align:center;transition:border-color .3s,transform .3s;}
+.value-card:hover{border-color:var(--clr-accent);transform:translateY(-4px);}
+.value-icon{width:64px;height:64px;background:var(--clr-accent-dim);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:var(--clr-accent);margin:0 auto 20px;}
+.value-card h3{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:10px;}
+.value-card p{color:var(--clr-muted);font-size:.9rem;line-height:1.65;}
+
+/* Stats */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--clr-border);border-radius:16px;overflow:hidden;}
+.stat-item{background:var(--clr-surface);padding:48px 24px;text-align:center;}
+.stat-big{font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:var(--clr-accent);line-height:1;}
+.stat-label{font-size:.78rem;color:var(--clr-muted);text-transform:uppercase;letter-spacing:.08em;margin-top:8px;}
+
+/* Clients */
+.clients-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.client-tile{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:12px;padding:24px;display:flex;align-items:center;justify-content:center;min-height:80px;transition:border-color .3s;}
+.client-tile:hover{border-color:var(--clr-accent);}
+.client-tile img{max-height:36px;width:auto;filter:brightness(0) invert(1);opacity:.5;transition:opacity .3s;}
+.client-tile:hover img{opacity:.9;}
+.client-tile span{color:var(--clr-muted);font-size:.9rem;font-weight:600;}
+
+/* What we are */
+.roles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.role-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:16px;padding:40px 36px;transition:border-color .3s,transform .3s;}
+.role-card:hover{border-color:var(--clr-accent);transform:translateY(-4px);}
+.role-num{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;color:var(--clr-accent-dim);margin-bottom:12px;line-height:1;}
+.role-card h3{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:10px;}
+.role-card p{color:var(--clr-muted);font-size:.9rem;line-height:1.7;}
+
+/* Why */
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.why-card{display:flex;gap:20px;background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:16px;padding:32px;transition:border-color .3s;}
+.why-card:hover{border-color:var(--clr-accent);}
+.why-icon{width:48px;height:48px;background:var(--clr-accent-dim);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;color:var(--clr-accent);}
+.why-body h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:6px;}
+.why-body p{color:var(--clr-muted);font-size:.87rem;line-height:1.65;}
+
+.cta-section{padding:96px 20px;text-align:center;position:relative;overflow:hidden;}
+.cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,#F5A62318 0%,transparent 70%);}
+
+@media(max-width:1024px){
+  .story-grid{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:768px){
+  .values-grid{grid-template-columns:1fr;}
+  .clients-grid{grid-template-columns:repeat(2,1fr);}
+  .roles-grid,.why-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo-color.png" alt="Think Mangoes" style="height:44px;width:auto;" />
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="blog.html">Insights</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary nav-cta">Let's Talk <i class="fas fa-arrow-right"></i></a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div style="position:relative;z-index:2;max-width:800px;margin:0 auto;">
+    <span class="section-tag"><i class="fas fa-seedling"></i> Our Story</span>
+    <h1>Born from <span class="accent">Curiosity.</span><br>Built on <span class="accent">Conviction.</span></h1>
+    <p>Like the mango &mdash; bold, distinctive, deeply loved &mdash; we bring that energy to every brand we partner with.</p>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="section">
+  <div class="section-inner">
+    <div class="story-grid">
+      <div class="fade-up">
+        <span class="section-tag">Who We Are</span>
+        <div class="story-quote">"Built by creators. Driven by strategy. Obsessed with results."</div>
+        <div class="story-body">
+          <p>Think Mangoes is a creative &amp; growth agency based in Bengaluru. We work with ambitious brands &mdash; B2B enterprises, fast-growing D2C companies, and everything in between &mdash; who want more than just a vendor.</p>
+          <p>Like the mango itself, we believe great brands should be bold, distinctive, and deeply loved. That philosophy shapes every strategy we build, every campaign we run, and every piece of creative we produce.</p>
+          <p>We don't do vanity work. We build growth engines &mdash; systems that attract the right people, engage them with real storytelling, and convert attention into measurable revenue.</p>
+        </div>
+      </div>
+      <div class="story-visual fade-up">
+        <div class="mango-icon"><i class="fas fa-seedling"></i></div>
+        <h3>Think Different.<br>Grow Different.</h3>
+        <p>From brand identity and digital campaigns to offline activations and AI-powered solutions &mdash; we are your one-stop growth partner.</p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:28px;">
+          <a href="services.html" class="btn btn-primary">See Our Services <i class="fas fa-arrow-right"></i></a>
+          <a href="contact.html" class="btn btn-outline">Talk to Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE VALUES -->
+<section class="section" style="background:var(--clr-surface);">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:60px;" class="fade-up">
+      <span class="section-tag">What Drives Us</span>
+      <h2 class="section-title">Our Core <span class="accent">Values</span></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card fade-up">
+        <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+        <h3>Creative First</h3>
+        <p>Every idea starts with "what if?" We push boundaries before we fall back on what's safe. Bold thinking is not optional &mdash; it's our default.</p>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Strategy Driven</h3>
+        <p>Creativity backed by real data. Every campaign, every post, every pixel is rooted in insight &mdash; because beautiful work that doesn't perform is just decoration.</p>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-icon"><i class="fas fa-bullseye"></i></div>
+        <h3>Results Obsessed</h3>
+        <p>We measure what matters to you &mdash; conversions, leads, revenue, recall. If it doesn't move a number that matters, we rethink it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:48px;" class="fade-up">
+      <span class="section-tag">By the Numbers</span>
+      <h2 class="section-title">The Think Mangoes <span class="accent">Track Record</span></h2>
+    </div>
+    <div class="stats-grid fade-up">
+      <div class="stat-item">
+        <div class="stat-big">30<span style="font-size:2rem">+</span></div>
+        <div class="stat-label">Brands Served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-big">10<span style="font-size:2rem">+</span></div>
+        <div class="stat-label">Years Team Expertise</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-big">5<span style="font-size:2rem">+</span></div>
+        <div class="stat-label">Industries</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-big">&#8734;</div>
+        <div class="stat-label">Growth Potential</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="section" style="background:var(--clr-surface);">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:48px;" class="fade-up">
+      <span class="section-tag">Our Clients</span>
+      <h2 class="section-title">Brands That <span class="accent">Trust Us</span></h2>
+      <p class="section-sub" style="margin:0 auto;max-width:540px;">From B2B enterprises to fast-growing D2C brands &mdash; ambitious companies that want more than a vendor.</p>
+    </div>
+    <div class="clients-grid">
+      <div class="client-tile fade-up"><img src="images/client-ckc.jpg" alt="C. Krishniah Chetty" /></div>
+      <div class="client-tile fade-up"><span>Iconhomz</span></div>
+      <div class="client-tile fade-up"><img src="images/client-mythri.png" alt="Mythri Builders" /></div>
+      <div class="client-tile fade-up"><img src="images/client-svr.png" alt="SVR Farms" /></div>
+      <div class="client-tile fade-up"><img src="images/client-alliance.jpg" alt="Alliance University" /></div>
+      <div class="client-tile fade-up"><img src="images/client-crmit.png" alt="CRMIT" /></div>
+      <div class="client-tile fade-up"><img src="images/client-vmoksha.jpg" alt="Vmoksha" /></div>
+      <div class="client-tile fade-up"><img src="images/client-msipl.png" alt="MSIPL" /></div>
+      <div class="client-tile fade-up"><img src="images/client-aratt.jpg" alt="Aratt" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- MORE THAN AN AGENCY -->
+<section class="section">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:60px;" class="fade-up">
+      <span class="section-tag">What We Are</span>
+      <h2 class="section-title">More Than Just <span class="accent">an Agency</span></h2>
+    </div>
+    <div class="roles-grid">
+      <div class="role-card fade-up">
+        <div class="role-num">01</div>
+        <h3>Strategy Partner</h3>
+        <p>We sit at the table where decisions are made. We don't just execute &mdash; we advise, challenge, and bring better ideas to every brief.</p>
+      </div>
+      <div class="role-card fade-up">
+        <div class="role-num">02</div>
+        <h3>Creative Team</h3>
+        <p>Designers, writers, and storytellers who make your brand impossible to ignore. Every touchpoint built to drive attention and action.</p>
+      </div>
+      <div class="role-card fade-up">
+        <div class="role-num">03</div>
+        <h3>Performance Team</h3>
+        <p>Data-obsessed marketers who optimize every campaign for measurable ROI. We track conversions, leads, and actual business growth.</p>
+      </div>
+      <div class="role-card fade-up">
+        <div class="role-num">04</div>
+        <h3>Long-term Growth Partner</h3>
+        <p>We're not here for a campaign. We're here to build the engine that scales your business &mdash; and stays with you as you grow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="section" style="background:var(--clr-surface);">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:60px;" class="fade-up">
+      <span class="section-tag">Why Choose Us</span>
+      <h2 class="section-title">Why Brands Choose <span class="accent">Think Mangoes</span></h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-up">
+        <div class="why-icon"><i class="fas fa-brain"></i></div>
+        <div class="why-body">
+          <h3>We Think Before We Execute</h3>
+          <p>Every campaign starts with strategy. We challenge briefs and bring better ideas always.</p>
+        </div>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon"><i class="fas fa-chart-bar"></i></div>
+        <div class="why-body">
+          <h3>We Focus on Revenue, Not Likes</h3>
+          <p>Vanity metrics don't pay bills. We track conversions, leads, and actual business growth.</p>
+        </div>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon"><i class="fas fa-handshake"></i></div>
+        <div class="why-body">
+          <h3>We Act Like Partners, Not Vendors</h3>
+          <p>Your brand becomes our obsession. Deep immersion before a single post goes live.</p>
+        </div>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon"><i class="fas fa-bolt"></i></div>
+        <div class="why-body">
+          <h3>We Move Fast &amp; Adapt Faster</h3>
+          <p>Young, agile, and hungry. We combine creative instinct with proven frameworks.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="section-inner" style="position:relative;z-index:2;">
+    <span class="section-tag">Let's Build Something Remarkable</span>
+    <h2 class="section-title fade-up">Ready to <span class="accent">Think Differently?</span></h2>
+    <p style="color:var(--clr-muted);font-size:1.1rem;max-width:500px;margin:0 auto 40px;line-height:1.7;" class="fade-up">Let's understand your brand and show you what Think Mangoes can do.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="fade-up">
+      <a href="contact.html" class="btn btn-primary btn-lg">Start Growing <i class="fas fa-arrow-right"></i></a>
+      <a href="https://wa.me/918109081047" target="_blank" class="btn btn-outline btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="margin-bottom:16px;display:inline-flex;">
+          <img src="images/logo-color.png" alt="Think Mangoes" style="height:40px;width:auto;" />
+        </a>
+        <p class="footer-tagline">Think Different. Grow Different.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://wa.me/918109081047" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-links-group">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Insights</a></li>
+          <li><a href="careers.html">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-group">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Digital Growth</a></li>
+          <li><a href="services.html">Branding &amp; Creative</a></li>
+          <li><a href="services.html">Offline Marketing</a></li>
+          <li><a href="services.html">Events &amp; Production</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p><i class="fas fa-user" style="color:var(--clr-accent);margin-right:8px;"></i>Bhumish Dewangan</p>
+        <p><a href="tel:+918109081047"><i class="fas fa-phone" style="color:var(--clr-accent);margin-right:8px;"></i>+91 81090 81047</a></p>
+        <p><a href="mailto:bhumish@thinkmangoes.com"><i class="fas fa-envelope" style="color:var(--clr-accent);margin-right:8px;"></i>bhumish@thinkmangoes.com</a></p>
+        <p><i class="fas fa-location-dot" style="color:var(--clr-accent);margin-right:8px;"></i>Bengaluru, India</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Think Mangoes. All rights reserved.</p>
+      <p style="color:var(--clr-muted);font-size:.8rem;">thinkmangoes.com</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }});
+}, {threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

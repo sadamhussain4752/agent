@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Think Mangoes – Creative &amp; Growth Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!-- <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" /> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 20px 80px;position:relative;overflow:hidden;}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;}
+.hero-orb-1{width:500px;height:500px;background:radial-gradient(circle,#F5A62340 0%,transparent 70%);top:-100px;left:-150px;animation:floatOrb 8s ease-in-out infinite;}
+.hero-orb-2{width:400px;height:400px;background:radial-gradient(circle,#F5A62320 0%,transparent 70%);bottom:-80px;right:-120px;animation:floatOrb 10s ease-in-out infinite reverse;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--clr-accent-dim);border:1px solid var(--clr-accent);color:var(--clr-accent);padding:8px 18px;border-radius:50px;font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:28px;}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.4rem,6vw,5rem);font-weight:800;line-height:1.1;margin-bottom:12px;color:var(--clr-text);}
+.hero h1 span{color:var(--clr-accent);}
+.hero-tagline{font-size:clamp(1.1rem,2.2vw,1.5rem);font-family:'Syne',sans-serif;font-weight:700;color:var(--clr-accent);margin-bottom:20px;letter-spacing:.02em;}
+.hero-sub{font-size:clamp(.95rem,2vw,1.15rem);color:var(--clr-muted);max-width:560px;margin:0 auto 36px;}
+.hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.marquee-section{padding:40px 0;border-top:1px solid var(--clr-border);border-bottom:1px solid var(--clr-border);overflow:hidden;}
+.marquee-label{text-align:center;font-size:.75rem;color:var(--clr-muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:24px;}
+.marquee-track{display:flex;gap:48px;animation:marquee 28s linear infinite;width:max-content;align-items:center;}
+.marquee-section:hover .marquee-track{animation-play-state:paused;}
+.logo-pill{height:48px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.logo-pill img{max-height:36px;width:auto;filter:brightness(0) invert(1);opacity:.55;transition:opacity .3s;}
+.logo-pill:hover img{opacity:1;}
+.logo-pill span{color:var(--clr-muted);font-size:.85rem;font-weight:600;white-space:nowrap;padding:6px 16px;border:1px solid var(--clr-border);border-radius:6px;}
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--clr-border);border-top:1px solid var(--clr-border);border-bottom:1px solid var(--clr-border);}
+.stat-cell{background:var(--clr-bg);padding:40px 24px;text-align:center;}
+.stat-num{font-family:'Syne',sans-serif;font-size:2.6rem;font-weight:800;color:var(--clr-accent);line-height:1;}
+.stat-lbl{font-size:.78rem;color:var(--clr-muted);margin-top:6px;text-transform:uppercase;letter-spacing:.06em;}
+.section{padding:96px 20px;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-tag{display:inline-block;background:var(--clr-accent-dim);color:var(--clr-accent);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:4px;margin-bottom:16px;}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.section-sub{color:var(--clr-muted);font-size:1.05rem;max-width:600px;line-height:1.7;}
+.section-header{margin-bottom:60px;}
+.section-header.center{text-align:center;}
+.section-header.center .section-sub{margin:0 auto;}
+.accent{color:var(--clr-accent);}
+.problem-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.problem-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:16px;padding:36px 32px;position:relative;overflow:hidden;transition:border-color .3s;}
+.problem-card:hover{border-color:var(--clr-accent);}
+.problem-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--clr-accent);transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.problem-card:hover::before{transform:scaleX(1);}
+.problem-num{font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:var(--clr-accent-dim);line-height:1;margin-bottom:16px;}
+.problem-card h3{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:10px;}
+.problem-card p{color:var(--clr-muted);font-size:.93rem;line-height:1.65;}
+.convert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.convert-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:16px;padding:40px 32px;text-align:center;transition:transform .3s,border-color .3s;}
+.convert-card:hover{transform:translateY(-4px);border-color:var(--clr-accent);}
+.convert-step{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;color:var(--clr-accent);letter-spacing:.12em;margin-bottom:12px;text-transform:uppercase;}
+.convert-card h3{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;margin-bottom:8px;}
+.convert-desc{font-size:.82rem;color:var(--clr-muted);margin-bottom:20px;}
+.convert-bullets{list-style:none;padding:0;text-align:left;}
+.convert-bullets li{font-size:.85rem;color:var(--clr-muted);padding:5px 0;padding-left:16px;position:relative;}
+.convert-bullets li::before{content:'→';position:absolute;left:0;color:var(--clr-accent);}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.svc-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:16px;padding:36px;transition:border-color .3s,transform .3s;}
+.svc-card:hover{border-color:var(--clr-accent);transform:translateY(-4px);}
+.svc-icon{width:52px;height:52px;background:var(--clr-accent-dim);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--clr-accent);margin-bottom:20px;}
+.svc-card h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:10px;}
+.svc-card p{color:var(--clr-muted);font-size:.88rem;line-height:1.65;}
+.svc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
+.svc-tag{background:var(--clr-accent-dim);color:var(--clr-accent);font-size:.7rem;padding:3px 10px;border-radius:20px;}
+.process-list{display:flex;flex-direction:column;gap:0;}
+.process-item{display:grid;grid-template-columns:80px 1fr;gap:32px;align-items:center;padding:32px 0;border-bottom:1px solid var(--clr-border);}
+.process-item:last-child{border-bottom:none;}
+.process-item:hover .process-num{color:var(--clr-accent);}
+.process-num{font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:var(--clr-border);line-height:1;text-align:center;transition:color .3s;}
+.process-info h3{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:6px;}
+.process-info p{color:var(--clr-muted);font-size:.93rem;line-height:1.65;}
+.deliver-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+.deliver-col{padding:40px 24px;background:var(--clr-surface);border:1px solid var(--clr-border);position:relative;}
+.deliver-col:first-child{border-radius:16px 0 0 16px;}
+.deliver-col:last-child{border-radius:0 16px 16px 0;}
+.deliver-col:not(:last-child){border-right:none;}
+.deliver-label{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--clr-accent);margin-bottom:12px;}
+.deliver-col h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:10px;}
+.deliver-col p{font-size:.83rem;color:var(--clr-muted);line-height:1.6;}
+.deliver-arrow{position:absolute;right:-18px;top:50%;transform:translateY(-50%);width:36px;height:36px;background:var(--clr-accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-size:.85rem;z-index:2;}
+.deliver-col:last-child .deliver-arrow{display:none;}
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.why-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:16px;padding:36px;display:flex;gap:20px;transition:border-color .3s,transform .3s;}
+.why-card:hover{border-color:var(--clr-accent);transform:translateY(-3px);}
+.why-icon{width:52px;height:52px;background:var(--clr-accent-dim);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem;color:var(--clr-accent);}
+.why-body h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:8px;}
+.why-body p{color:var(--clr-muted);font-size:.9rem;line-height:1.65;}
+.stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--clr-border);border-radius:16px;overflow:hidden;}
+.stack-col{padding:40px 28px;border-right:1px solid var(--clr-border);position:relative;}
+.stack-col:last-child{border-right:none;}
+.stack-arrow{position:absolute;right:-14px;top:50%;transform:translateY(-50%);width:28px;height:28px;background:var(--clr-accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#000;z-index:2;}
+.stack-col:last-child .stack-arrow{display:none;}
+.stack-label{font-family:'Syne',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--clr-accent);margin-bottom:16px;}
+.stack-col h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:12px;}
+.stack-items{list-style:none;padding:0;margin:0;}
+.stack-items li{font-size:.82rem;color:var(--clr-muted);padding:4px 0;}
+.stack-note{text-align:center;margin-top:28px;font-size:.9rem;color:var(--clr-muted);}
+.results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.result-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:16px;padding:36px 24px;text-align:center;transition:border-color .3s;}
+.result-card:hover{border-color:var(--clr-accent);}
+.result-metric{font-family:'Syne',sans-serif;font-size:2.8rem;font-weight:800;color:var(--clr-accent);line-height:1;margin-bottom:10px;}
+.result-card h3{font-size:1rem;font-weight:700;margin-bottom:8px;}
+.result-card p{font-size:.83rem;color:var(--clr-muted);line-height:1.6;}
+.agency-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.agency-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:16px;padding:40px 36px;transition:border-color .3s,transform .3s;}
+.agency-card:hover{border-color:var(--clr-accent);transform:translateY(-4px);}
+.agency-num{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;color:var(--clr-accent-dim);line-height:1;margin-bottom:14px;}
+.agency-card h3{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:10px;}
+.agency-card p{color:var(--clr-muted);font-size:.9rem;line-height:1.7;}
+.cta-section{padding:96px 20px;text-align:center;position:relative;overflow:hidden;}
+.cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,#F5A62318 0%,transparent 70%);}
+@media(max-width:1024px){.stats-bar{grid-template-columns:repeat(2,1fr);}.stack-grid{grid-template-columns:repeat(2,1fr);}.stack-col{border-right:none;border-bottom:1px solid var(--clr-border);}.deliver-grid{grid-template-columns:repeat(2,1fr);}.results-grid{grid-template-columns:repeat(2,1fr);}.services-grid{grid-template-columns:repeat(2,1fr);}}.
+@media(max-width:768px){.problem-grid,.convert-grid,.why-grid,.agency-grid,.deliver-grid{grid-template-columns:1fr;}.deliver-arrow{display:none;}.services-grid{grid-template-columns:1fr;}.process-item{grid-template-columns:60px 1fr;}}.
+@media(max-width:480px){.results-grid{grid-template-columns:repeat(2,1fr);}}.
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo-white copy.png" alt="Think Mangoes" style="height:55px;width:auto;" />
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="blog.html">Insights</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary nav-cta">Let's Talk <i class="fas fa-arrow-right"></i></a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div style="position:relative;z-index:2;max-width:860px;">
+    <div class="hero-badge"><i class="fas fa-bolt"></i> Creative &amp; Growth Agency &mdash; Bengaluru</div>
+    <h1>We Don't Do <span>Marketing.</span><br>We Build Growth Engines.</h1>
+    <p class="hero-tagline">Think Different. Grow Different.</p>
+    <p class="hero-sub">From brand identity to performance campaigns &mdash; bold strategy, creative execution, and measurable results.</p>
+    <div class="hero-ctas">
+      <a href="contact.html" class="btn btn-primary btn-lg">Start Growing <i class="fas fa-arrow-right"></i></a>
+      <a href="services.html" class="btn btn-outline btn-lg">Our Services</a>
+    </div>
+  </div>
+</section>
+
+<section class="marquee-section">
+  <p class="marquee-label">Brands That Trust Us</p>
+  <div style="overflow:hidden;">
+    <div class="marquee-track">
+      <div class="logo-pill"><img src="images/client-ckc.jpg" alt="C. Krishniah Chetty" /></div>
+      <div class="logo-pill"><span>Iconhomz</span></div>
+      <div class="logo-pill"><img src="images/client-mythri.png" alt="Mythri Builders" /></div>
+      <div class="logo-pill"><img src="images/client-svr.png" alt="SVR Farms" /></div>
+      <div class="logo-pill"><img src="images/client-alliance.jpg" alt="Alliance University" /></div>
+      <div class="logo-pill"><img src="images/client-crmit.png" alt="CRMIT" /></div>
+      <div class="logo-pill"><img src="images/client-vmoksha.jpg" alt="Vmoksha" /></div>
+      <div class="logo-pill"><img src="images/client-msipl.png" alt="MSIPL" /></div>
+      <div class="logo-pill"><img src="images/client-aratt.jpg" alt="Aratt" /></div>
+      <div class="logo-pill"><img src="images/client-ckc.jpg" alt="C. Krishniah Chetty" /></div>
+      <div class="logo-pill"><span>Iconhomz</span></div>
+      <div class="logo-pill"><img src="images/client-mythri.png" alt="Mythri Builders" /></div>
+      <div class="logo-pill"><img src="images/client-svr.png" alt="SVR Farms" /></div>
+      <div class="logo-pill"><img src="images/client-alliance.jpg" alt="Alliance University" /></div>
+      <div class="logo-pill"><img src="images/client-crmit.png" alt="CRMIT" /></div>
+      <div class="logo-pill"><img src="images/client-vmoksha.jpg" alt="Vmoksha" /></div>
+      <div class="logo-pill"><img src="images/client-msipl.png" alt="MSIPL" /></div>
+      <div class="logo-pill"><img src="images/client-aratt.jpg" alt="Aratt" /></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat-cell fade-up"><div class="stat-num">30<span style="font-size:2rem">+</span></div><div class="stat-lbl">Brands Served</div></div>
+  <div class="stat-cell fade-up"><div class="stat-num">10<span style="font-size:2rem">+</span></div><div class="stat-lbl">Years Team Expertise</div></div>
+  <div class="stat-cell fade-up"><div class="stat-num">5<span style="font-size:2rem">+</span></div><div class="stat-lbl">Industries</div></div>
+  <div class="stat-cell fade-up"><div class="stat-num">&#8734;</div><div class="stat-lbl">Growth Potential</div></div>
+</div>
+
+<section class="section" style="background:var(--clr-surface);">
+  <div class="section-inner">
+    <div class="section-header center fade-up">
+      <span class="section-tag">The Real Problem</span>
+      <h2 class="section-title">Most Brands Don't Have a<br><span class="accent">Marketing Problem&hellip;</span></h2>
+      <p class="section-sub">They have something deeper. And that's exactly where we come in.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card fade-up">
+        <div class="problem-num">01</div>
+        <h3>No Clear Positioning</h3>
+        <p>They blend in. Everyone sounds the same. No distinct voice, no clear story &mdash; just noise in a crowded market.</p>
+      </div>
+      <div class="problem-card fade-up">
+        <div class="problem-num">02</div>
+        <h3>Random Posting</h3>
+        <p>Content without context. Noise without signal. Activity without strategy &mdash; never moving the needle.</p>
+      </div>
+      <div class="problem-card fade-up">
+        <div class="problem-num">03</div>
+        <h3>No Funnel</h3>
+        <p>Traffic arrives. Nothing converts. Revenue stagnates. Without a funnel, every visitor is a missed opportunity.</p>
+      </div>
+      <div class="problem-card fade-up">
+        <div class="problem-num">04</div>
+        <h3>No Conversion System</h3>
+        <p>Clicks don't turn into customers. Growth plateaus. Without a conversion system, you're leaving money on the table.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px;" class="fade-up">
+      <a href="contact.html" class="btn btn-primary btn-lg">That's Where We Come In <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header center fade-up">
+      <span class="section-tag">Our Framework</span>
+      <h2 class="section-title">How We Turn<br><span class="accent">Attention Into Revenue</span></h2>
+    </div>
+    <div class="convert-grid">
+      <div class="convert-card fade-up">
+        <div class="convert-step">01 &mdash; Attract</div>
+        <h3>Get Found</h3>
+        <p class="convert-desc">Get found by the right people</p>
+        <ul class="convert-bullets">
+          <li>Content Strategy</li>
+          <li>Paid Ads</li>
+          <li>SEO &amp; Visibility</li>
+        </ul>
+      </div>
+      <div class="convert-card fade-up">
+        <div class="convert-step">02 &mdash; Engage</div>
+        <h3>Make Them Care</h3>
+        <p class="convert-desc">Make them stay and care</p>
+        <ul class="convert-bullets">
+          <li>Storytelling</li>
+          <li>Brand Building</li>
+          <li>Community Trust</li>
+        </ul>
+      </div>
+      <div class="convert-card fade-up">
+        <div class="convert-step">03 &mdash; Convert</div>
+        <h3>Turn Into Revenue</h3>
+        <p class="convert-desc">Turn attention into revenue</p>
+        <ul class="convert-bullets">
+          <li>Funnels</li>
+          <li>Landing Pages</li>
+          <li>CRO</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--clr-surface);">
+  <div class="section-inner">
+    <div class="section-header center fade-up">
+      <span class="section-tag">What We Do</span>
+      <h2 class="section-title">Everything You Need<br>to <span class="accent">Grow</span></h2>
+      <p class="section-sub">Seven service pillars. One integrated growth engine.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card fade-up">
+        <div class="svc-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Digital Growth</h3>
+        <p>From social media to search, we turn attention into revenue with data-backed campaigns.</p>
+        <div class="svc-tags"><span class="svc-tag">SMO</span><span class="svc-tag">SMM</span><span class="svc-tag">SEO</span><span class="svc-tag">PPC</span></div>
+      </div>
+      <div class="svc-card fade-up">
+        <div class="svc-icon"><i class="fas fa-laptop-code"></i></div>
+        <h3>Website &amp; Tech</h3>
+        <p>Fast, conversion-focused digital platforms from corporate websites to scalable e-commerce.</p>
+        <div class="svc-tags"><span class="svc-tag">Web Design</span><span class="svc-tag">E-Commerce</span><span class="svc-tag">Mobile Apps</span></div>
+      </div>
+      <div class="svc-card fade-up">
+        <div class="svc-icon"><i class="fas fa-palette"></i></div>
+        <h3>Branding &amp; Creative</h3>
+        <p>Bold identities, compelling content, and visuals that drive attention and action.</p>
+        <div class="svc-tags"><span class="svc-tag">Identity</span><span class="svc-tag">Design</span><span class="svc-tag">Video</span></div>
+      </div>
+      <div class="svc-card fade-up">
+        <div class="svc-icon"><i class="fas fa-shield-halved"></i></div>
+        <h3>Brand Authority &amp; Trust</h3>
+        <p>ORM and PR strategies that build credibility at scale and control your brand narrative.</p>
+        <div class="svc-tags"><span class="svc-tag">ORM</span><span class="svc-tag">PR</span><span class="svc-tag">Crisis Mgmt</span></div>
+      </div>
+      <div class="svc-card fade-up">
+        <div class="svc-icon"><i class="fas fa-bullhorn"></i></div>
+        <h3>Offline &amp; Ground Marketing</h3>
+        <p>From airport terminals to RWA societies &mdash; ATL, BTL, OOH, transit and hyperlocal.</p>
+        <div class="svc-tags"><span class="svc-tag">ATL/BTL</span><span class="svc-tag">OOH</span><span class="svc-tag">Hyperlocal</span></div>
+      </div>
+      <div class="svc-card fade-up">
+        <div class="svc-icon"><i class="fas fa-calendar-star"></i></div>
+        <h3>Events &amp; Production</h3>
+        <p>Corporate events, gifting, and premium print production for experience-led marketing.</p>
+        <div class="svc-tags"><span class="svc-tag">Events</span><span class="svc-tag">Printing</span><span class="svc-tag">Gifting</span></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px;" class="fade-up">
+      <a href="services.html" class="btn btn-primary">Explore All Services <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
+      <div class="fade-up">
+        <span class="section-tag">Our Process</span>
+        <h2 class="section-title">Five Steps.<br>Zero Guesswork.<br><span class="accent">One Outcome: Growth.</span></h2>
+        <p style="color:var(--clr-muted);line-height:1.7;margin-top:16px;">Every engagement follows a proven process. No templates. No shortcuts. Just results.</p>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:32px;">Start the Process <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="process-list fade-up">
+        <div class="process-item">
+          <div class="process-num">01</div>
+          <div class="process-info">
+            <h3>Understand Business</h3>
+            <p>Deep-dive into your goals, audience, and competition.</p>
+          </div>
+        </div>
+        <div class="process-item">
+          <div class="process-num">02</div>
+          <div class="process-info">
+            <h3>Build Strategy</h3>
+            <p>Custom growth blueprint. No templates. No shortcuts.</p>
+          </div>
+        </div>
+        <div class="process-item">
+          <div class="process-num">03</div>
+          <div class="process-info">
+            <h3>Execute Creatively</h3>
+            <p>Bold ideas. Consistent execution. Every time.</p>
+          </div>
+        </div>
+        <div class="process-item">
+          <div class="process-num">04</div>
+          <div class="process-info">
+            <h3>Optimize with Data</h3>
+            <p>Track everything. Drop what doesn't work. Scale what does.</p>
+          </div>
+        </div>
+        <div class="process-item">
+          <div class="process-num">05</div>
+          <div class="process-info">
+            <h3>Scale Aggressively</h3>
+            <p>When it works, we amplify. Fast.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--clr-surface);">
+  <div class="section-inner">
+    <div class="section-header center fade-up">
+      <span class="section-tag">Growth in Action</span>
+      <h2 class="section-title">How We <span class="accent">Deliver Results</span></h2>
+      <p class="section-sub">A glimpse into our growth framework in action.</p>
+    </div>
+    <div class="deliver-grid fade-up">
+      <div class="deliver-col">
+        <div class="deliver-label">01 &mdash; Problem</div>
+        <h3>Brand with No Digital Presence</h3>
+        <p>No visibility online. No leads from digital channels. Relying only on word-of-mouth.</p>
+        <div class="deliver-arrow"><i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="deliver-col">
+        <div class="deliver-label">02 &mdash; Strategy</div>
+        <h3>Full-Funnel Growth Plan</h3>
+        <p>SEO foundation + Meta Ads for awareness + Retargeting funnel + Landing page CRO.</p>
+        <div class="deliver-arrow"><i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="deliver-col">
+        <div class="deliver-label">03 &mdash; Execution</div>
+        <h3>60-Day Sprint</h3>
+        <p>Content calendar live, ads running A/B tests, new landing page deployed, tracking set up.</p>
+        <div class="deliver-arrow"><i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="deliver-col">
+        <div class="deliver-label">04 &mdash; Outcome</div>
+        <h3>Measurable Growth</h3>
+        <p><strong style="color:var(--clr-accent);">3&times; organic reach &middot; 40% lead volume &uarr; &middot; Brand recall &middot; Consistent revenue pipeline.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header center fade-up">
+      <span class="section-tag">Why Choose Us</span>
+      <h2 class="section-title">Why Brands Choose<br><span class="accent">Think Mangoes</span></h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-up">
+        <div class="why-icon"><i class="fas fa-brain"></i></div>
+        <div class="why-body">
+          <h3>We Think Before We Execute</h3>
+          <p>Every campaign starts with strategy. We challenge briefs and bring better ideas always.</p>
+        </div>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon"><i class="fas fa-chart-bar"></i></div>
+        <div class="why-body">
+          <h3>We Focus on Revenue, Not Likes</h3>
+          <p>Vanity metrics don't pay bills. We track conversions, leads, and actual business growth.</p>
+        </div>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon"><i class="fas fa-handshake"></i></div>
+        <div class="why-body">
+          <h3>We Act Like Partners, Not Vendors</h3>
+          <p>Your brand becomes our obsession. Deep immersion before a single post goes live.</p>
+        </div>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon"><i class="fas fa-bolt"></i></div>
+        <div class="why-body">
+          <h3>We Move Fast &amp; Adapt Faster</h3>
+          <p>Young, agile, and hungry. We combine creative instinct with proven frameworks.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--clr-surface);">
+  <div class="section-inner">
+    <div class="section-header center fade-up">
+      <span class="section-tag">The System</span>
+      <h2 class="section-title">Your Complete <span class="accent">Growth Stack</span></h2>
+    </div>
+    <div class="stack-grid fade-up">
+      <div class="stack-col">
+        <div class="stack-label">Awareness</div>
+        <h3>Get Discovered</h3>
+        <ul class="stack-items">
+          <li>Content</li><li>SEO</li><li>Paid Ads</li><li>Social Media</li>
+        </ul>
+        <div class="stack-arrow"><i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="stack-col">
+        <div class="stack-label">Consideration</div>
+        <h3>Build Trust</h3>
+        <ul class="stack-items">
+          <li>Storytelling</li><li>Email</li><li>Retargeting</li><li>ORM</li>
+        </ul>
+        <div class="stack-arrow"><i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="stack-col">
+        <div class="stack-label">Conversion</div>
+        <h3>Drive Revenue</h3>
+        <ul class="stack-items">
+          <li>Landing Pages</li><li>Funnels</li><li>CRO</li>
+        </ul>
+        <div class="stack-arrow"><i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="stack-col">
+        <div class="stack-label">Retention</div>
+        <h3>Scale &amp; Repeat</h3>
+        <ul class="stack-items">
+          <li>Loyalty</li><li>Referrals</li><li>Upsell</li>
+        </ul>
+      </div>
+    </div>
+    <p class="stack-note fade-up">Every layer works together. No gaps. No leaks.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header center fade-up">
+      <span class="section-tag">Results</span>
+      <h2 class="section-title">What <span class="accent">Success</span> Looks Like</h2>
+      <p class="section-sub">When you partner with Think Mangoes, this is what changes.</p>
+    </div>
+    <div class="results-grid">
+      <div class="result-card fade-up">
+        <div class="result-metric">3&times;</div>
+        <h3>Organic Reach</h3>
+        <p>More people find you without spending on ads.</p>
+      </div>
+      <div class="result-card fade-up">
+        <div class="result-metric">40%&uarr;</div>
+        <h3>Lead Volume</h3>
+        <p>A properly built funnel converts traffic into prospects.</p>
+      </div>
+      <div class="result-card fade-up">
+        <div class="result-metric" style="font-size:2.2rem;"><i class="fas fa-star"></i></div>
+        <h3>Brand Recall</h3>
+        <p>Your audience recognizes you and trusts you consistently.</p>
+      </div>
+      <div class="result-card fade-up">
+        <div class="result-metric" style="font-size:2.2rem;"><i class="fas fa-chart-line"></i></div>
+        <h3>Revenue Pipeline</h3>
+        <p>No more feast-or-famine. Consistent inbound flow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--clr-surface);">
+  <div class="section-inner">
+    <div class="section-header center fade-up">
+      <span class="section-tag">What We Are</span>
+      <h2 class="section-title">More Than Just<br><span class="accent">an Agency</span></h2>
+    </div>
+    <div class="agency-grid">
+      <div class="agency-card fade-up">
+        <div class="agency-num">01</div>
+        <h3>Strategy Partner</h3>
+        <p>We sit at the table where decisions are made. We don't just execute, we advise.</p>
+      </div>
+      <div class="agency-card fade-up">
+        <div class="agency-num">02</div>
+        <h3>Creative Team</h3>
+        <p>Designers, writers, and storytellers who make your brand impossible to ignore.</p>
+      </div>
+      <div class="agency-card fade-up">
+        <div class="agency-num">03</div>
+        <h3>Performance Team</h3>
+        <p>Data-obsessed marketers who optimize every campaign for measurable ROI.</p>
+      </div>
+      <div class="agency-card fade-up">
+        <div class="agency-num">04</div>
+        <h3>Long-term Growth Partner</h3>
+        <p>We're not here for a campaign. We're here to build the engine that scales your business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="section-inner" style="position:relative;z-index:2;">
+    <span class="section-tag">Let's Build Something Remarkable</span>
+    <h2 class="section-title fade-up">Ready to <span class="accent">Think Differently?</span></h2>
+    <p style="color:var(--clr-muted);font-size:1.1rem;max-width:520px;margin:0 auto 40px;line-height:1.7;" class="fade-up">Let's understand your brand and show you what Think Mangoes can do.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="fade-up">
+      <a href="contact.html" class="btn btn-primary btn-lg">Start Growing <i class="fas fa-arrow-right"></i></a>
+      <a href="https://wa.me/918109081047" target="_blank" class="btn btn-outline btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="margin-bottom:16px;display:inline-flex;">
+          <img src="images/logo-color.png" alt="Think Mangoes" style="height:40px;width:auto;" />
+        </a>
+        <p class="footer-tagline">Think Different. Grow Different.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://wa.me/918109081047" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-links-group">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Insights</a></li>
+          <li><a href="careers.html">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-group">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Digital Growth</a></li>
+          <li><a href="services.html">Branding &amp; Creative</a></li>
+          <li><a href="services.html">Offline Marketing</a></li>
+          <li><a href="services.html">Events &amp; Production</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p><i class="fas fa-user" style="color:var(--clr-accent);margin-right:8px;"></i>Bhumish Dewangan</p>
+        <p><a href="tel:+918109081047"><i class="fas fa-phone" style="color:var(--clr-accent);margin-right:8px;"></i>+91 81090 81047</a></p>
+        <p><a href="mailto:bhumish@thinkmangoes.com"><i class="fas fa-envelope" style="color:var(--clr-accent);margin-right:8px;"></i>bhumish@thinkmangoes.com</a></p>
+        <p><i class="fas fa-location-dot" style="color:var(--clr-accent);margin-right:8px;"></i>Bengaluru, India</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Think Mangoes. All rights reserved.</p>
+      <p style="color:var(--clr-muted);font-size:.8rem;">thinkmangoes.com</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }});
+}, {threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

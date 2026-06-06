@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Services – Think Mangoes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+.page-hero{padding:160px 20px 80px;text-align:center;position:relative;overflow:hidden;}
+.page-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 0%,#F5A62320 0%,transparent 70%);}
+.page-hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:800;line-height:1.1;max-width:780px;margin:0 auto 20px;}
+.page-hero p{color:var(--clr-muted);font-size:1.1rem;max-width:580px;margin:0 auto;line-height:1.7;}
+.accent{color:var(--clr-accent);}
+.section{padding:96px 20px;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-tag{display:inline-block;background:var(--clr-accent-dim);color:var(--clr-accent);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:4px;margin-bottom:16px;}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:800;line-height:1.15;margin-bottom:16px;}
+
+/* Quick nav */
+.svc-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:32px 20px;background:var(--clr-surface);border-bottom:1px solid var(--clr-border);position:sticky;top:72px;z-index:50;}
+.svc-nav-btn{background:transparent;border:1px solid var(--clr-border);color:var(--clr-muted);padding:8px 18px;border-radius:50px;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .25s;display:flex;align-items:center;gap:7px;text-decoration:none;}
+.svc-nav-btn:hover,.svc-nav-btn.active{background:var(--clr-accent);border-color:var(--clr-accent);color:#000;}
+
+/* Service section block */
+.svc-section{padding:80px 20px;border-bottom:1px solid var(--clr-border);}
+.svc-section:last-of-type{border-bottom:none;}
+.svc-section-inner{max-width:1200px;margin:0 auto;}
+.svc-header{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-bottom:56px;}
+.svc-number{font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;color:var(--clr-accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;}
+.svc-title{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;line-height:1.2;margin-bottom:12px;}
+.svc-subtitle{font-size:1rem;color:var(--clr-muted);line-height:1.7;}
+.svc-icon-big{width:80px;height:80px;background:var(--clr-accent-dim);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--clr-accent);}
+.svc-desc-side{display:flex;flex-direction:column;gap:16px;justify-content:center;}
+.svc-desc-side p{color:var(--clr-muted);font-size:.95rem;line-height:1.75;}
+
+/* Sub-service cards grid */
+.sub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.sub-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:14px;padding:28px 24px;transition:border-color .3s;}
+.sub-card:hover{border-color:var(--clr-accent);}
+.sub-card h4{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:12px;}
+.sub-card ul{list-style:none;padding:0;margin:0;}
+.sub-card ul li{font-size:.82rem;color:var(--clr-muted);padding:4px 0;padding-left:14px;position:relative;line-height:1.5;}
+.sub-card ul li::before{content:'·';position:absolute;left:0;color:var(--clr-accent);font-weight:700;}
+
+/* Overview grid */
+.overview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.overview-pill{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:12px;padding:20px 22px;display:flex;align-items:center;gap:14px;transition:border-color .3s;}
+.overview-pill:hover{border-color:var(--clr-accent);}
+.overview-pill i{color:var(--clr-accent);font-size:1.1rem;width:20px;text-align:center;}
+.overview-pill span{font-size:.88rem;font-weight:600;color:var(--clr-text);}
+
+.cta-section{padding:96px 20px;text-align:center;position:relative;overflow:hidden;}
+.cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,#F5A62318 0%,transparent 70%);}
+
+@media(max-width:1024px){
+  .svc-header{grid-template-columns:1fr;}
+  .sub-grid{grid-template-columns:repeat(2,1fr);}
+  .overview-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:768px){
+  .sub-grid{grid-template-columns:1fr;}
+  .overview-grid{grid-template-columns:1fr;}
+  .svc-nav{top:60px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo-color.png" alt="Think Mangoes" style="height:44px;width:auto;" />
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="blog.html">Insights</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary nav-cta">Let's Talk <i class="fas fa-arrow-right"></i></a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div style="position:relative;z-index:2;max-width:800px;margin:0 auto;">
+    <span class="section-tag"><i class="fas fa-layer-group"></i> Our Services</span>
+    <h1>Everything You Need<br>to <span class="accent">Grow</span></h1>
+    <p>Seven service pillars. One integrated growth engine. From digital to offline &mdash; we cover every channel that moves your business forward.</p>
+  </div>
+</section>
+
+<!-- QUICK NAV -->
+<div class="svc-nav">
+  <a href="#digital" class="svc-nav-btn"><i class="fas fa-chart-line"></i> Digital Growth</a>
+  <a href="#website" class="svc-nav-btn"><i class="fas fa-laptop-code"></i> Website &amp; Tech</a>
+  <a href="#branding" class="svc-nav-btn"><i class="fas fa-palette"></i> Branding &amp; Creative</a>
+  <a href="#authority" class="svc-nav-btn"><i class="fas fa-shield-halved"></i> Brand Authority</a>
+  <a href="#offline" class="svc-nav-btn"><i class="fas fa-bullhorn"></i> Offline Marketing</a>
+  <a href="#events" class="svc-nav-btn"><i class="fas fa-calendar-star"></i> Events &amp; Production</a>
+  <a href="#ai" class="svc-nav-btn"><i class="fas fa-microchip"></i> AI &amp; Future</a>
+</div>
+
+<!-- 01 DIGITAL GROWTH -->
+<section class="svc-section" id="digital">
+  <div class="svc-section-inner">
+    <div class="svc-header">
+      <div class="fade-up">
+        <div class="svc-number">01 &mdash; Digital Growth Services</div>
+        <h2 class="svc-title">Grow Faster.<br><span class="accent">Grow Smarter.</span></h2>
+        <p class="svc-subtitle">From social media to search, we turn attention into revenue.</p>
+      </div>
+      <div class="svc-desc-side fade-up">
+        <div class="svc-icon-big"><i class="fas fa-chart-line"></i></div>
+        <p>Data-backed digital campaigns engineered for measurable business outcomes. Every rupee optimised for maximum return.</p>
+      </div>
+    </div>
+    <div class="sub-grid">
+      <div class="sub-card fade-up">
+        <h4><i class="fab fa-instagram" style="color:var(--clr-accent);margin-right:8px;"></i>Social Media Optimization (SMO)</h4>
+        <p style="font-size:.82rem;color:var(--clr-muted);margin-bottom:12px;">Turn your profiles into growth engines through strategic positioning and organic community building.</p>
+        <ul>
+          <li>Setup across all major platforms</li>
+          <li>Profile positioning for credibility</li>
+          <li>Content calendar creation &amp; scheduling</li>
+          <li>Platform-native creatives &mdash; Reels, Stories, Carousels</li>
+          <li>Hashtag strategy &amp; SEO-led captions</li>
+          <li>Organic follower growth strategies</li>
+          <li>Community management</li>
+          <li>UGC Content &amp; Influencer Marketing</li>
+          <li>Monthly analytics &amp; recommendations</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-megaphone" style="color:var(--clr-accent);margin-right:8px;"></i>Social Media Marketing (SMM)</h4>
+        <p style="font-size:.82rem;color:var(--clr-muted);margin-bottom:12px;">Campaign strategies built for business outcomes, platform-native creatives designed to convert.</p>
+        <ul>
+          <li>Business-outcome focused planning</li>
+          <li>Platform-native creative design</li>
+          <li>Audience targeting for quality leads</li>
+          <li>Retargeting systems for warm audiences</li>
+          <li>Real-time data optimization</li>
+          <li>Continuous A/B testing</li>
+          <li>Facebook, Instagram, LinkedIn, YouTube</li>
+          <li>Conversion attribution reporting</li>
+          <li>Actionable growth insights</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fab fa-google" style="color:var(--clr-accent);margin-right:8px;"></i>Search Engine Optimization (SEO)</h4>
+        <p style="font-size:.82rem;color:var(--clr-muted);margin-bottom:12px;">68% of online experiences start with search. We make sure they find you first.</p>
+        <ul>
+          <li>Keyword research &amp; intent mapping</li>
+          <li>Meta titles, descriptions &amp; H-tags</li>
+          <li>Content optimization for users &amp; bots</li>
+          <li>Internal linking &amp; URL architecture</li>
+          <li>High-DA backlink acquisition</li>
+          <li>Guest blogging &amp; digital PR</li>
+          <li>Core Web Vitals &amp; speed optimization</li>
+          <li>Mobile-first &amp; responsive fixes</li>
+          <li>Structured data &amp; rich snippets</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-ad" style="color:var(--clr-accent);margin-right:8px;"></i>Performance Marketing &amp; PPC</h4>
+        <p style="font-size:.82rem;color:var(--clr-muted);margin-bottom:12px;">ROI-focused campaigns engineered for scale. Every rupee optimised for maximum return.</p>
+        <ul>
+          <li>ROI-focused campaigns across all platforms</li>
+          <li>Advanced audience segmentation</li>
+          <li>Continuous testing &amp; smart budget allocation</li>
+          <li>Target high-intent active buyers</li>
+          <li>High-converting ad creatives</li>
+          <li>Cost-efficient bidding strategies</li>
+          <li>Multi-channel visibility</li>
+          <li>Conversion tracking &amp; ROAS analysis</li>
+          <li>Performance monitoring &amp; scaling</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-envelope-open-text" style="color:var(--clr-accent);margin-right:8px;"></i>Integrated Marketing Campaigns</h4>
+        <p style="font-size:.82rem;color:var(--clr-muted);margin-bottom:12px;">Seamlessly connected campaigns across digital, offline, and social channels.</p>
+        <ul>
+          <li>Digital, Offline, Radio, ATL, BTL</li>
+          <li>Influencer Marketing</li>
+          <li>Brand Launch &amp; Store launches</li>
+          <li>3D Mascot &amp; 3D Product Renders</li>
+          <li>Google, Display, YouTube, Search Ads</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 WEBSITE & TECH -->
+<section class="svc-section" id="website" style="background:var(--clr-surface);">
+  <div class="svc-section-inner">
+    <div class="svc-header">
+      <div class="fade-up">
+        <div class="svc-number">02 &mdash; Website &amp; Tech Solutions</div>
+        <h2 class="svc-title">Build Digital Assets<br><span class="accent">That Convert.</span></h2>
+        <p class="svc-subtitle">Websites, e-commerce, and mobile apps engineered for performance.</p>
+      </div>
+      <div class="svc-desc-side fade-up">
+        <div class="svc-icon-big"><i class="fas fa-laptop-code"></i></div>
+        <p>We build fast, conversion-focused digital platforms &mdash; from corporate websites to fully scalable e-commerce revenue systems.</p>
+        <p>Technologies: WordPress, Next.js, Shopify, MongoDB, React Native, Angular &amp; AMCs.</p>
+      </div>
+    </div>
+    <div class="sub-grid">
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-desktop" style="color:var(--clr-accent);margin-right:8px;"></i>Website Design &amp; Development</h4>
+        <ul>
+          <li>Conversion-focused UI/UX design</li>
+          <li>Fast, responsive, mobile-first</li>
+          <li>SEO-ready architecture</li>
+          <li>CRM &amp; analytics integration</li>
+          <li>Continuous performance improvements</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-shopping-cart" style="color:var(--clr-accent);margin-right:8px;"></i>E-Commerce Solutions</h4>
+        <ul>
+          <li>High-converting storefront design</li>
+          <li>Seamless payment &amp; logistics integration</li>
+          <li>Optimised checkout systems</li>
+          <li>Scalable backend architecture</li>
+          <li>Performance tracking &amp; growth optimisation</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-mobile-alt" style="color:var(--clr-accent);margin-right:8px;"></i>Mobile App Development</h4>
+        <ul>
+          <li>Native &amp; cross-platform apps</li>
+          <li>Intuitive UI/UX design</li>
+          <li>Secure &amp; scalable architecture</li>
+          <li>Custom features aligned to goals</li>
+          <li>Analytics &amp; performance tracking</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 BRANDING & CREATIVE -->
+<section class="svc-section" id="branding">
+  <div class="svc-section-inner">
+    <div class="svc-header">
+      <div class="fade-up">
+        <div class="svc-number">03 &mdash; Branding &amp; Creative</div>
+        <h2 class="svc-title">Design That Drives<br><span class="accent">Attention &amp; Action.</span></h2>
+        <p class="svc-subtitle">Bold identities, compelling content, and visuals that sell instantly.</p>
+      </div>
+      <div class="svc-desc-side fade-up">
+        <div class="svc-icon-big"><i class="fas fa-palette"></i></div>
+        <p>Every idea starts with "what if?" We push creative boundaries while keeping everything rooted in strategy and business outcomes.</p>
+      </div>
+    </div>
+    <div class="sub-grid">
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-star" style="color:var(--clr-accent);margin-right:8px;"></i>Branding &amp; Visual Identity</h4>
+        <p style="font-size:.82rem;color:var(--clr-muted);margin-bottom:12px;">Scope: Immersion &amp; Research → Strategy &amp; Positioning → Visual Identity &amp; Brand Book</p>
+        <ul>
+          <li>Logo &amp; identity system design</li>
+          <li>Brand guidelines &amp; visual consistency</li>
+          <li>Packaging &amp; product branding</li>
+          <li>Brand voice &amp; messaging strategy</li>
+          <li>Brand archetype &amp; positioning</li>
+          <li>Employer branding</li>
+          <li>Nomenclature &amp; naming</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-pen-nib" style="color:var(--clr-accent);margin-right:8px;"></i>Creative Design</h4>
+        <ul>
+          <li>Social media creatives &amp; campaigns</li>
+          <li>Print &amp; advertising designs</li>
+          <li>High-impact visual storytelling</li>
+          <li>Multi-platform design consistency</li>
+          <li>Conversion-focused creative strategy</li>
+          <li>Marketing collaterals &amp; creatives</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-camera" style="color:var(--clr-accent);margin-right:8px;"></i>Product Photography</h4>
+        <ul>
+          <li>High-quality product photography</li>
+          <li>Lifestyle &amp; branding shoots</li>
+          <li>E-commerce optimised visuals</li>
+          <li>Creative direction &amp; styling</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-film" style="color:var(--clr-accent);margin-right:8px;"></i>Video Production</h4>
+        <ul>
+          <li>Brand films &amp; storytelling videos</li>
+          <li>Product demos &amp; ad creatives</li>
+          <li>Social media video content</li>
+          <li>3D Animation &amp; Explainer Videos</li>
+          <li>3D Walkthrough &amp; CGI Videos</li>
+          <li>TVCs &amp; high-quality cinematic execution</li>
+          <li>End-to-end production services</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 BRAND AUTHORITY -->
+<section class="svc-section" id="authority" style="background:var(--clr-surface);">
+  <div class="svc-section-inner">
+    <div class="svc-header">
+      <div class="fade-up">
+        <div class="svc-number">04 &mdash; Brand Authority &amp; Trust</div>
+        <h2 class="svc-title">Control Your<br><span class="accent">Brand Narrative.</span></h2>
+        <p class="svc-subtitle">ORM and PR strategies that build credibility at scale.</p>
+      </div>
+      <div class="svc-desc-side fade-up">
+        <div class="svc-icon-big"><i class="fas fa-shield-halved"></i></div>
+        <p>93% of consumers read reviews before buying. A single negative review can cost up to 22% of potential customers. Your reputation is your most valuable digital asset.</p>
+      </div>
+    </div>
+    <div class="sub-grid">
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-star-half-stroke" style="color:var(--clr-accent);margin-right:8px;"></i>Review Monitoring &amp; Response</h4>
+        <ul>
+          <li>Google, Justdial, Sulekha, G2 monitoring</li>
+          <li>Real-time multi-platform tracking</li>
+          <li>Timely, brand-safe responses</li>
+          <li>Ethical review generation campaigns</li>
+          <li>5-star review growth strategies</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-newspaper" style="color:var(--clr-accent);margin-right:8px;"></i>PR &amp; Brand Placement</h4>
+        <ul>
+          <li>Media coverage across platforms</li>
+          <li>Influencer &amp; celebrity collaborations</li>
+          <li>Strategic brand storytelling</li>
+          <li>High-visibility positive placements</li>
+          <li>Long-term credibility systems</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-triangle-exclamation" style="color:var(--clr-accent);margin-right:8px;"></i>Crisis Management</h4>
+        <ul>
+          <li>Rapid-response playbooks</li>
+          <li>Crisis communication planning</li>
+          <li>Push down harmful search results</li>
+          <li>Build authoritative positive content</li>
+          <li>Brand SERP management</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 OFFLINE MARKETING -->
+<section class="svc-section" id="offline">
+  <div class="svc-section-inner">
+    <div class="svc-header">
+      <div class="fade-up">
+        <div class="svc-number">05 &mdash; Offline &amp; Ground Marketing</div>
+        <h2 class="svc-title">Own Every Channel,<br><span class="accent">Everywhere.</span></h2>
+        <p class="svc-subtitle">From airport terminals to RWA societies &mdash; we take your brand everywhere.</p>
+      </div>
+      <div class="svc-desc-side fade-up">
+        <div class="svc-icon-big"><i class="fas fa-bullhorn"></i></div>
+        <p>Integrated offline strategies that ensure your brand is visible whether your audience is driving on a highway, commuting on the metro, or living in a gated society.</p>
+      </div>
+    </div>
+    <div class="sub-grid">
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-rectangle-ad" style="color:var(--clr-accent);margin-right:8px;"></i>ATL &amp; BTL Activities</h4>
+        <ul>
+          <li>Newspaper, radio &amp; print campaigns</li>
+          <li>Mall activations &amp; brand promotions</li>
+          <li>On-ground engagement</li>
+          <li>Integrated marketing strategies</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-signs-post" style="color:var(--clr-accent);margin-right:8px;"></i>OOH / DOOH Advertising</h4>
+        <ul>
+          <li>Hoardings, highways, malls</li>
+          <li>Digital outdoor advertising</li>
+          <li>Large-scale city coverage</li>
+          <li>High-frequency exposure</li>
+          <li>Geo-targeted campaigns</li>
+          <li>24/7 brand visibility</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-plane" style="color:var(--clr-accent);margin-right:8px;"></i>Airport Advertising</h4>
+        <ul>
+          <li>Pan-India airport placements</li>
+          <li>High-value audience targeting</li>
+          <li>Premium positioning</li>
+          <li>Strategic placement planning</li>
+          <li>Measurable offline performance</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-bus" style="color:var(--clr-accent);margin-right:8px;"></i>Transit Advertising</h4>
+        <ul>
+          <li>Bus, cab, metro &amp; auto formats</li>
+          <li>Cost-effective mass visibility</li>
+          <li>Continuous visibility &amp; recall</li>
+          <li>High-impact visual creatives</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-house-chimney-user" style="color:var(--clr-accent);margin-right:8px;"></i>RWA &amp; Hyperlocal Activation</h4>
+        <ul>
+          <li>Society branding &amp; activations</li>
+          <li>Direct engagement setups</li>
+          <li>Hyperlocal targeting strategies</li>
+          <li>Community-level campaigns</li>
+          <li>High-impact local visibility</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-store" style="color:var(--clr-accent);margin-right:8px;"></i>Retail &amp; In-Store Branding</h4>
+        <ul>
+          <li>In-store branding strategies</li>
+          <li>Product placement</li>
+          <li>Visual merchandising</li>
+          <li>Customer engagement setups</li>
+          <li>POS material design</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-print" style="color:var(--clr-accent);margin-right:8px;"></i>Newspaper &amp; Print Advertising</h4>
+        <ul>
+          <li>Classified &amp; display ads</li>
+          <li>Regional &amp; national coverage</li>
+          <li>Strategic media planning</li>
+          <li>High-visibility placements</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-radio" style="color:var(--clr-accent);margin-right:8px;"></i>FM &amp; Radio Campaigns</h4>
+        <ul>
+          <li>Pan-India radio campaigns</li>
+          <li>Show sponsorships &amp; mentions</li>
+          <li>High-frequency ad placements</li>
+          <li>Local audience targeting</li>
+          <li>Strong brand recall</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 EVENTS & PRODUCTION -->
+<section class="svc-section" id="events" style="background:var(--clr-surface);">
+  <div class="svc-section-inner">
+    <div class="svc-header">
+      <div class="fade-up">
+        <div class="svc-number">06 &mdash; Events, Print &amp; Production</div>
+        <h2 class="svc-title">Experience-Led<br><span class="accent">Marketing.</span></h2>
+        <p class="svc-subtitle">Corporate events, gifting, and premium print production under one roof.</p>
+      </div>
+      <div class="svc-desc-side fade-up">
+        <div class="svc-icon-big"><i class="fas fa-calendar-star"></i></div>
+        <p>End-to-end event management, corporate gifting solutions, and high-quality printing services that create brand experiences people remember.</p>
+      </div>
+    </div>
+    <div class="sub-grid">
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-users" style="color:var(--clr-accent);margin-right:8px;"></i>Event Management</h4>
+        <ul>
+          <li>Corporate events &amp; conferences</li>
+          <li>Product launches &amp; activations</li>
+          <li>Live shows &amp; brand events</li>
+          <li>End-to-end execution</li>
+          <li>High-impact audience engagement</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-gift" style="color:var(--clr-accent);margin-right:8px;"></i>Corporate Gifting</h4>
+        <ul>
+          <li>Custom branded gifting solutions</li>
+          <li>Employee engagement kits</li>
+          <li>Festive &amp; promotional hampers</li>
+          <li>End-to-end sourcing &amp; delivery</li>
+          <li>Brand recall through physical touchpoints</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-print" style="color:var(--clr-accent);margin-right:8px;"></i>Printing Services</h4>
+        <ul>
+          <li>Brochures, flyers &amp; collaterals</li>
+          <li>Large-format printing</li>
+          <li>Custom materials &amp; finishes</li>
+          <li>High-quality output</li>
+          <li>Indoor &amp; outdoor solutions</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-display" style="color:var(--clr-accent);margin-right:8px;"></i>Digital Signage</h4>
+        <ul>
+          <li>LED walls &amp; digital displays</li>
+          <li>Real-time content management</li>
+          <li>Interactive branding setups</li>
+          <li>High-visibility engagement</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 AI & FUTURE -->
+<section class="svc-section" id="ai">
+  <div class="svc-section-inner">
+    <div class="svc-header">
+      <div class="fade-up">
+        <div class="svc-number">07 &mdash; AI &amp; Future-Ready Services</div>
+        <h2 class="svc-title">Scale Creativity<br><span class="accent">With Intelligence.</span></h2>
+        <p class="svc-subtitle">AI-powered solutions built for the next era of marketing.</p>
+      </div>
+      <div class="svc-desc-side fade-up">
+        <div class="svc-icon-big"><i class="fas fa-microchip"></i></div>
+        <p>Harness AI for creative production, workflow automation, and enterprise-grade deployment. Be ready for the next era before your competitors.</p>
+      </div>
+    </div>
+    <div class="sub-grid">
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-wand-magic-sparkles" style="color:var(--clr-accent);margin-right:8px;"></i>AI Creative Solutions</h4>
+        <ul>
+          <li>AI-powered design &amp; content creation</li>
+          <li>Faster campaign execution</li>
+          <li>Data-driven creative strategies</li>
+          <li>Automated workflows</li>
+          <li>High-efficiency output</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-gears" style="color:var(--clr-accent);margin-right:8px;"></i>AI Automation</h4>
+        <ul>
+          <li>Workflow automation systems</li>
+          <li>AI chatbots &amp; customer handling</li>
+          <li>CRM &amp; tool integrations</li>
+          <li>Process optimisation</li>
+          <li>Smart decision-making systems</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-building" style="color:var(--clr-accent);margin-right:8px;"></i>AI Enterprise Solutions</h4>
+        <ul>
+          <li>Custom AI strategy &amp; deployment</li>
+          <li>Enterprise-grade automation</li>
+          <li>Data analytics &amp; machine learning</li>
+          <li>Scalable infrastructure</li>
+          <li>Business systems integration</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-magnifying-glass-chart" style="color:var(--clr-accent);margin-right:8px;"></i>Generative Engine Optimisation (GEO)</h4>
+        <ul>
+          <li>AI search optimisation strategies</li>
+          <li>Content structured for AI platforms</li>
+          <li>Visibility in generative search results</li>
+          <li>Continuous adaptation &amp; future-proofing</li>
+          <li>Next-gen SEO positioning</li>
+        </ul>
+      </div>
+      <div class="sub-card fade-up">
+        <h4><i class="fas fa-rectangle-ad" style="color:var(--clr-accent);margin-right:8px;"></i>AI Advertising</h4>
+        <ul>
+          <li>AI-driven targeting &amp; creatives</li>
+          <li>Real-time campaign optimisation</li>
+          <li>Personalized ad experiences</li>
+          <li>Automated scaling</li>
+          <li>Maximum ROI focus</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW SUMMARY -->
+<section class="section" style="background:var(--clr-surface);">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:48px;" class="fade-up">
+      <span class="section-tag">Everything We Do</span>
+      <h2 class="section-title">The Full <span class="accent">Service Overview</span></h2>
+    </div>
+    <div class="overview-grid">
+      <div class="overview-pill fade-up"><i class="fas fa-chart-line"></i><span>SMO · SMM · SEO · Performance · PPC</span></div>
+      <div class="overview-pill fade-up"><i class="fas fa-laptop-code"></i><span>Web Design · E-Commerce · Mobile Apps</span></div>
+      <div class="overview-pill fade-up"><i class="fas fa-palette"></i><span>Identity · Design · Photography · Video</span></div>
+      <div class="overview-pill fade-up"><i class="fas fa-shield-halved"></i><span>ORM · PR &amp; Placement · Crisis Mgmt</span></div>
+      <div class="overview-pill fade-up"><i class="fas fa-bullhorn"></i><span>ATL/BTL · OOH · Airport · Transit · Radio</span></div>
+      <div class="overview-pill fade-up"><i class="fas fa-calendar-star"></i><span>Events · Gifting · Printing · Digital Signage</span></div>
+      <div class="overview-pill fade-up"><i class="fas fa-microchip"></i><span>AI Creative · Automation · GEO · AI Ads</span></div>
+      <div class="overview-pill fade-up"><i class="fas fa-house-chimney-user"></i><span>Hyperlocal · Retail · Print · Newspaper</span></div>
+      <div class="overview-pill fade-up"><i class="fas fa-film"></i><span>3D Animation · Explainer · TVC · CGI</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="section-inner" style="position:relative;z-index:2;">
+    <span class="section-tag">Let's Build Something Remarkable</span>
+    <h2 class="section-title fade-up">Ready to <span class="accent">Think Differently?</span></h2>
+    <p style="color:var(--clr-muted);font-size:1.1rem;max-width:500px;margin:0 auto 40px;line-height:1.7;" class="fade-up">Let's understand your brand and show you what Think Mangoes can do.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="fade-up">
+      <a href="contact.html" class="btn btn-primary btn-lg">Start Growing <i class="fas fa-arrow-right"></i></a>
+      <a href="https://wa.me/918109081047" target="_blank" class="btn btn-outline btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="margin-bottom:16px;display:inline-flex;">
+          <img src="images/logo-color.png" alt="Think Mangoes" style="height:40px;width:auto;" />
+        </a>
+        <p class="footer-tagline">Think Different. Grow Different.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://wa.me/918109081047" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-links-group">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Insights</a></li>
+          <li><a href="careers.html">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-group">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#digital">Digital Growth</a></li>
+          <li><a href="#branding">Branding &amp; Creative</a></li>
+          <li><a href="#offline">Offline Marketing</a></li>
+          <li><a href="#events">Events &amp; Production</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p><i class="fas fa-user" style="color:var(--clr-accent);margin-right:8px;"></i>Bhumish Dewangan</p>
+        <p><a href="tel:+918109081047"><i class="fas fa-phone" style="color:var(--clr-accent);margin-right:8px;"></i>+91 81090 81047</a></p>
+        <p><a href="mailto:bhumish@thinkmangoes.com"><i class="fas fa-envelope" style="color:var(--clr-accent);margin-right:8px;"></i>bhumish@thinkmangoes.com</a></p>
+        <p><i class="fas fa-location-dot" style="color:var(--clr-accent);margin-right:8px;"></i>Bengaluru, India</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Think Mangoes. All rights reserved.</p>
+      <p style="color:var(--clr-muted);font-size:.8rem;">thinkmangoes.com</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }});
+}, {threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Active nav highlight
+const sections = document.querySelectorAll('.svc-section');
+const navBtns = document.querySelectorAll('.svc-nav-btn');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      navBtns.forEach(b => b.classList.remove('active'));
+      const active = document.querySelector('.svc-nav-btn[href="#'+e.target.id+'"]');
+      if(active) active.classList.add('active');
+    }
+  });
+}, {threshold:0.3});
+sections.forEach(s => io.observe(s));
+</script>
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers – Think Mangoes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .upload-area {
+      border:2px dashed var(--clr-border);
+      border-radius:var(--radius-md);
+      padding:32px;
+      text-align:center;
+      transition:var(--transition);
+      cursor:pointer;
+    }
+    .upload-area:hover { border-color:var(--clr-accent); background:var(--clr-accent-dim); }
+    .upload-area input[type="file"] { display:none; }
+    .benefit-card {
+      background:var(--clr-card);
+      border:1px solid var(--clr-border);
+      border-radius:var(--radius-md);
+      padding:28px;
+      text-align:center;
+      transition:var(--transition);
+    }
+    .benefit-card:hover { border-color:rgba(245,166,35,0.3); transform:translateY(-4px); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo-color.png" alt="Think Mangoes" style="height:44px;width:auto;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="blog.html">Insights</a></li>
+      <li><a href="careers.html" class="active">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="contact.html" class="btn btn-outline" style="padding:10px 22px;font-size:0.88rem;">View Case Studies</a>
+      <a href="contact.html" class="btn btn-primary" style="padding:10px 22px;font-size:0.88rem;">Book Strategy Call</a>
+    </div>
+    <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="blog.html">Insights</a>
+  <a href="careers.html">Careers</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-primary">Book Strategy Call</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero" style="min-height:auto;padding:160px 0 80px;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(245,166,35,0.09),transparent 60%);pointer-events:none;"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="container" style="position:relative;z-index:2;text-align:center;">
+    <span class="label">We're Hiring</span>
+    <h1 style="margin-bottom:24px;">Build The Future of<br><span class="grad-text">Marketing With Us</span></h1>
+    <p style="color:var(--clr-muted);font-size:1.1rem;max-width:580px;margin:0 auto 40px;">
+      Join a team of growth obsessives, creative thinkers, and brand builders creating the marketing systems of tomorrow.
+    </p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="#open-roles" class="btn btn-primary" style="padding:14px 36px;">View Open Roles</a>
+      <a href="#apply" class="btn btn-outline" style="padding:14px 36px;">Apply Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY JOIN US -->
+<section class="section" style="background:var(--clr-bg2);">
+  <div class="container">
+    <div class="section-head center">
+      <span class="label">Life at Think Mangoes</span>
+      <h2>Why Join <span class="grad-text">Our Team?</span></h2>
+      <p>We're not just building campaigns — we're building the future of marketing. Here's why the best talent chooses us.</p>
+    </div>
+    <div class="grid-3" style="margin-top:12px;">
+      <div class="card fade-up" style="text-align:center;">
+        <div style="font-size:2.5rem;margin-bottom:16px;"><i class="fas fa-rocket" style="color:var(--clr-accent);"></i></div>
+        <h4 style="margin-bottom:8px;">Exciting Brand Work</h4>
+        <p style="font-size:0.88rem;color:var(--clr-muted);">Work on campaigns for real brands across D2C, real estate, education, and enterprise. No fake briefs — only live, impactful work.</p>
+      </div>
+      <div class="card fade-up" style="text-align:center;">
+        <div style="font-size:2.5rem;margin-bottom:16px;"><i class="fas fa-palette" style="color:var(--clr-accent);"></i></div>
+        <h4 style="margin-bottom:8px;">Creative Culture</h4>
+        <p style="font-size:0.88rem;color:var(--clr-muted);">Bold ideas are celebrated here. We encourage experimentation, reward creative risk-taking, and hate mediocre output as much as you do.</p>
+      </div>
+      <div class="card fade-up" style="text-align:center;">
+        <div style="font-size:2.5rem;margin-bottom:16px;"><i class="fas fa-robot" style="color:var(--clr-accent);"></i></div>
+        <h4 style="margin-bottom:8px;">Creative &amp; Growth Environment</h4>
+        <p style="font-size:0.88rem;color:var(--clr-muted);">You'll work with the latest AI tools — GPT-4o, Midjourney, RunwayML, and more — before most agencies even know they exist.</p>
+      </div>
+      <div class="card fade-up" style="text-align:center;">
+        <div style="font-size:2.5rem;margin-bottom:16px;"><i class="fas fa-chart-line" style="color:var(--clr-accent);"></i></div>
+        <h4 style="margin-bottom:8px;">Rapid Growth</h4>
+        <p style="font-size:0.88rem;color:var(--clr-muted);">Fast promotions based on merit. People who deliver results grow quickly — there are no glass ceilings here.</p>
+      </div>
+      <div class="card fade-up" style="text-align:center;">
+        <div style="font-size:2.5rem;margin-bottom:16px;"><i class="fas fa-home" style="font-size:2.5rem;color:var(--clr-accent);"></i></div>
+        <h4 style="margin-bottom:8px;">Flexible Working</h4>
+        <p style="font-size:0.88rem;color:var(--clr-muted);">Hybrid model — blend in-office creative energy with remote flexibility. We trust you to get the work done wherever you work best.</p>
+      </div>
+      <div class="card fade-up" style="text-align:center;">
+        <div style="font-size:2.5rem;margin-bottom:16px;"><i class="fas fa-brain" style="color:var(--clr-accent);"></i></div>
+        <h4 style="margin-bottom:8px;">Learning First</h4>
+        <p style="font-size:0.88rem;color:var(--clr-muted);">Dedicated learning budget, internal training sessions, course subscriptions, and industry conferences — we invest in your growth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPEN POSITIONS -->
+<section class="section" id="open-roles">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Open Positions</span>
+      <h2 style="margin-bottom:8px;">We're Looking For<br><span class="grad-text">Exceptional People</span></h2>
+      <p style="color:var(--clr-muted);">7 open roles across marketing, tech, and creative.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px;">
+
+      <div class="job-card fade-up">
+        <div class="job-info">
+          <h4>Performance Marketer</h4>
+          <p style="font-size:0.88rem;color:var(--clr-muted);">Manage paid media campaigns across Google, Meta, and LinkedIn. Own ROAS targets for 5+ brand accounts.</p>
+          <div class="job-tags">
+            <span class="job-type">Full-Time</span>
+            <span class="job-type">Hybrid</span>
+            <span class="job-type">Mumbai</span>
+            <span class="tag">2+ Years</span>
+          </div>
+        </div>
+        <a href="#apply" class="btn btn-primary" style="flex-shrink:0;">Apply Now →</a>
+      </div>
+
+      <div class="job-card fade-up">
+        <div class="job-info">
+          <h4>SEO Specialist</h4>
+          <p style="font-size:0.88rem;color:var(--clr-muted);">Drive organic growth for clients through technical SEO, content strategy, link building, and the emerging field of GEO.</p>
+          <div class="job-tags">
+            <span class="job-type">Full-Time</span>
+            <span class="job-type">Hybrid</span>
+            <span class="job-type">Mumbai</span>
+            <span class="tag">2+ Years</span>
+          </div>
+        </div>
+        <a href="#apply" class="btn btn-primary" style="flex-shrink:0;">Apply Now →</a>
+      </div>
+
+      <div class="job-card fade-up">
+        <div class="job-info">
+          <h4>Content Strategist</h4>
+          <p style="font-size:0.88rem;color:var(--clr-muted);">Build content strategies for B2B and D2C brands. Plan, write, and oversee production of blogs, case studies, and social content.</p>
+          <div class="job-tags">
+            <span class="job-type">Full-Time</span>
+            <span class="job-type">Remote</span>
+            <span class="tag">3+ Years</span>
+          </div>
+        </div>
+        <a href="#apply" class="btn btn-primary" style="flex-shrink:0;">Apply Now →</a>
+      </div>
+
+      <div class="job-card fade-up">
+        <div class="job-info">
+          <h4>Graphic Designer</h4>
+          <p style="font-size:0.88rem;color:var(--clr-muted);">Create compelling visual content for brands — social media, ad creatives, brand identity elements, and campaign materials.</p>
+          <div class="job-tags">
+            <span class="job-type">Full-Time</span>
+            <span class="job-type">Hybrid</span>
+            <span class="job-type">Mumbai</span>
+            <span class="tag">1+ Year</span>
+          </div>
+        </div>
+        <a href="#apply" class="btn btn-primary" style="flex-shrink:0;">Apply Now →</a>
+      </div>
+
+      <div class="job-card fade-up">
+        <div class="job-info">
+          <h4>Video Editor</h4>
+          <p style="font-size:0.88rem;color:var(--clr-muted);">Edit high-quality brand films, reels, and campaign videos. Experience with motion graphics and Premiere Pro/After Effects essential.</p>
+          <div class="job-tags">
+            <span class="job-type">Full-Time</span>
+            <span class="job-type">Hybrid</span>
+            <span class="job-type">Mumbai</span>
+            <span class="tag">2+ Years</span>
+          </div>
+        </div>
+        <a href="#apply" class="btn btn-primary" style="flex-shrink:0;">Apply Now →</a>
+      </div>
+
+      <div class="job-card fade-up">
+        <div class="job-info">
+          <h4>AI Automation Specialist</h4>
+          <p style="font-size:0.88rem;color:var(--clr-muted);">Build automation workflows using Make.com, n8n, and Zapier. Experience with AI APIs, CRM integrations, and chatbot development required.</p>
+          <div class="job-tags">
+            <span class="job-type">Full-Time</span>
+            <span class="job-type">Remote</span>
+            <span class="tag">Hot Role 🔥</span>
+          </div>
+        </div>
+        <a href="#apply" class="btn btn-primary" style="flex-shrink:0;">Apply Now →</a>
+      </div>
+
+      <div class="job-card fade-up">
+        <div class="job-info">
+          <h4>React / Next.js Developer</h4>
+          <p style="font-size:0.88rem;color:var(--clr-muted);">Build high-performance websites and web apps for our clients. Strong React, TypeScript, and API integration skills required. Bonus: Tailwind, Supabase.</p>
+          <div class="job-tags">
+            <span class="job-type">Full-Time</span>
+            <span class="job-type">Remote</span>
+            <span class="tag">3+ Years</span>
+            <span class="tag">Hot Role 🔥</span>
+          </div>
+        </div>
+        <a href="#apply" class="btn btn-primary" style="flex-shrink:0;">Apply Now →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="section" style="background:var(--clr-bg2);">
+  <div class="container">
+    <div class="section-head center">
+      <span class="label">Perks & Benefits</span>
+      <h2>What You Get at<br><span class="grad-text">Think Mangoes</span></h2>
+    </div>
+    <div class="grid-4" style="margin-top:12px;">
+      <div class="benefit-card fade-up">
+        <div style="font-size:2rem;margin-bottom:12px;"><i class="fas fa-book-open" style="font-size:2rem;color:var(--clr-accent);"></i></div>
+        <h4 style="margin-bottom:6px;">Learning Budget</h4>
+        <p style="font-size:0.85rem;color:var(--clr-muted);">₹30,000/year for courses, books, and conferences of your choice.</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <div style="font-size:2rem;margin-bottom:12px;"><i class="fas fa-home" style="font-size:2.5rem;color:var(--clr-accent);"></i></div>
+        <h4 style="margin-bottom:6px;">Hybrid Work</h4>
+        <p style="font-size:0.85rem;color:var(--clr-muted);">Flexible schedule with in-office and remote work options.</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <div style="font-size:2rem;margin-bottom:12px;"><i class="fas fa-coins" style="color:var(--clr-accent);"></i></div>
+        <h4 style="margin-bottom:6px;">Competitive Pay</h4>
+        <p style="font-size:0.85rem;color:var(--clr-muted);">Market-beating salaries reviewed every 6 months.</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <div style="font-size:2rem;margin-bottom:12px;"><i class="fas fa-bullseye" style="color:var(--clr-accent);"></i></div>
+        <h4 style="margin-bottom:6px;">Performance Bonuses</h4>
+        <p style="font-size:0.85rem;color:var(--clr-muted);">Quarterly bonuses tied directly to team and personal results.</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <div style="font-size:2rem;margin-bottom:12px;"><i class="fas fa-robot" style="color:var(--clr-accent);"></i></div>
+        <h4 style="margin-bottom:6px;">AI Tool Access</h4>
+        <p style="font-size:0.85rem;color:var(--clr-muted);">Full access to premium AI tools — GPT-4o, Midjourney, Claude, and more.</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <div style="font-size:2rem;margin-bottom:12px;"><i class="fas fa-heartbeat" style="font-size:2rem;color:var(--clr-accent);"></i></div>
+        <h4 style="margin-bottom:6px;">Health Benefits</h4>
+        <p style="font-size:0.85rem;color:var(--clr-muted);">Medical insurance coverage for you and your immediate family.</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <div style="font-size:2rem;margin-bottom:12px;"><i class="fas fa-glass-cheers" style="font-size:2rem;color:var(--clr-accent);"></i></div>
+        <h4 style="margin-bottom:6px;">Team Offsites</h4>
+        <p style="font-size:0.85rem;color:var(--clr-muted);">Annual team retreats and quarterly celebration events.</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <div style="font-size:2rem;margin-bottom:12px;"><i class="fas fa-bolt" style="color:var(--clr-accent);"></i></div>
+        <h4 style="margin-bottom:6px;">Fast-Track Career</h4>
+        <p style="font-size:0.85rem;color:var(--clr-muted);">Merit-based promotions — talent moves fast here, no waiting your turn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATION FORM -->
+<section class="section" id="apply">
+  <div class="container">
+    <div style="max-width:760px;margin:0 auto;">
+      <div class="section-head center">
+        <span class="label">Apply Now</span>
+        <h2>Ready to Join<br><span class="grad-text">The Team?</span></h2>
+        <p style="color:var(--clr-muted);">Fill out the form below and our team will get back to you within 48 hours.</p>
+      </div>
+      <div class="card" style="padding:48px;">
+        <form onsubmit="submitApplication(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" placeholder="Your full name" required />
+            </div>
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input type="tel" placeholder="+91 81090 81047" required />
+            </div>
+            <div class="form-group">
+              <label>Position Applying For *</label>
+              <select required>
+                <option value="">Select a role...</option>
+                <option>Performance Marketer</option>
+                <option>SEO Specialist</option>
+                <option>Content Strategist</option>
+                <option>Graphic Designer</option>
+                <option>Video Editor</option>
+                <option>AI Automation Specialist</option>
+                <option>React / Next.js Developer</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Portfolio / LinkedIn URL</label>
+            <input type="url" placeholder="https://yourportfolio.com or LinkedIn URL" />
+          </div>
+          <div class="form-group">
+            <label>Why do you want to join Think Mangoes? *</label>
+            <textarea placeholder="Tell us about yourself, your experience, and why you'd be a great fit..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Upload Resume (PDF, max 5MB) *</label>
+            <div class="upload-area" onclick="document.getElementById('resumeUpload').click()">
+              <div style="font-size:2rem;margin-bottom:8px;"><i class="fas fa-file-pdf" style="font-size:2rem;color:var(--clr-accent);"></i></div>
+              <p style="font-weight:600;margin-bottom:4px;color:var(--clr-white);">Click to upload your resume</p>
+              <p style="font-size:0.82rem;color:var(--clr-muted);">PDF up to 5MB</p>
+              <input type="file" id="resumeUpload" accept=".pdf" onchange="showFileName(this)" />
+            </div>
+            <p id="fileNameDisplay" style="font-size:0.82rem;color:var(--clr-accent);margin-top:8px;display:none;"></p>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;">
+            <input type="checkbox" id="consent" style="width:16px;height:16px;accent-color:var(--clr-accent);" required />
+            <label for="consent" style="font-size:0.85rem;color:var(--clr-muted);cursor:pointer;">I agree to Think Mangoes processing my application data in accordance with their privacy policy.</label>
+          </div>
+          <button type="submit" class="btn btn-primary w-full" style="justify-content:center;font-size:1rem;padding:16px;">Submit Application →</button>
+        </form>
+        <div id="successMsg" style="display:none;text-align:center;padding:32px;">
+          <div style="font-size:3rem;margin-bottom:16px;"><i class="fas fa-glass-cheers" style="font-size:2rem;color:var(--clr-accent);"></i></div>
+          <h3 style="margin-bottom:8px;color:var(--clr-accent);">Application Received!</h3>
+          <p style="color:var(--clr-muted);">Thanks for applying! Our team will review your application and get back to you within 48 hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="margin-bottom:4px;display:inline-flex;">
+          <img src="images/logo-color.png" alt="Think Mangoes" style="height:44px;width:auto;" />
+        </a>
+        <p>We build growth engines for ambitious brands through creative strategy, bold execution, and performance marketing.</p>
+        <p style="font-size:0.82rem;color:var(--clr-muted);margin-top:8px;">THINK MANGOES, THINK DIFFERENT.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services.html">Branding & Creative</a></li>
+          <li><a href="services.html">Digital Marketing</a></li>
+          <li><a href="services.html">SEO & GEO</a></li>
+          <li><a href="services.html">Performance Marketing</a></li>
+          <li><a href="services.html">AI &amp; Future Services</a></li>
+          <li><a href="services.html">Web Development</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Insights</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:bhumish@thinkmangoes.com"><i class="fas fa-envelope fa-fw" style="margin-right:8px;color:var(--clr-accent);"></i>bhumish@thinkmangoes.com</a></li>
+          <li><a href="tel:+919999999999"><i class="fas fa-phone fa-fw" style="margin-right:8px;color:var(--clr-accent);"></i>+91 81090 81047</a></li>
+          <li><a href="#">Bengaluru, India</a></li>
+          <li><a href="contact.html">Book a Call</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Think Mangoes. All rights reserved.</p>
+      <p>Privacy Policy · Terms of Service</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  const observer = new IntersectionObserver(e => e.forEach(el => { if(el.isIntersecting) el.target.classList.add('visible'); }), {threshold:0.1});
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  function showFileName(input) {
+    const display = document.getElementById('fileNameDisplay');
+    if (input.files.length > 0) {
+      display.textContent = '✓ ' + input.files[0].name;
+      display.style.display = 'block';
+    }
+  }
+
+  function submitApplication(e) {
+    e.preventDefault();
+    document.querySelector('form').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  }
+</script>
+</body>
+</html>
