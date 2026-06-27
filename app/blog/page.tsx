@@ -2,8 +2,6 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Search, ArrowUpRight, Clock, ChevronRight, Mail } from "lucide-react";
 
 const categories = [
@@ -104,16 +102,21 @@ export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
-        gsap.fromTo(el, { autoAlpha: 0, y: 32 }, {
-          autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 85%" },
+    let ctx: { revert: () => void } | null = null;
+    (async () => {
+      const { default: gsap } = await import("gsap");
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      gsap.registerPlugin(ScrollTrigger);
+      ctx = gsap.context(() => {
+        gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
+          gsap.fromTo(el, { autoAlpha: 0, y: 32 }, {
+            autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.out",
+            scrollTrigger: { trigger: el, start: "top 85%" },
+          });
         });
-      });
-    }, pageRef);
-    return () => ctx.revert();
+      }, pageRef);
+    })();
+    return () => { ctx?.revert(); };
   }, []);
 
   const filtered = posts.filter((p) => {

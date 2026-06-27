@@ -2,8 +2,6 @@
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ArrowUpRight, Briefcase, ChevronDown, GraduationCap, Heart,
   MapPin, Monitor, Star, TrendingUp, Upload, Users, Zap, Clock, CheckCircle2
@@ -125,16 +123,21 @@ export default function CareersPage() {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", role: "", message: "" });
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
-        gsap.fromTo(el, { autoAlpha: 0, y: 32 }, {
-          autoAlpha: 1, y: 0, duration: 0.85, ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 85%" },
+    let ctx: { revert: () => void } | null = null;
+    (async () => {
+      const { default: gsap } = await import("gsap");
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      gsap.registerPlugin(ScrollTrigger);
+      ctx = gsap.context(() => {
+        gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
+          gsap.fromTo(el, { autoAlpha: 0, y: 32 }, {
+            autoAlpha: 1, y: 0, duration: 0.85, ease: "power3.out",
+            scrollTrigger: { trigger: el, start: "top 85%" },
+          });
         });
-      });
-    }, pageRef);
-    return () => ctx.revert();
+      }, pageRef);
+    })();
+    return () => { ctx?.revert(); };
   }, []);
 
   return (

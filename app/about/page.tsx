@@ -2,8 +2,6 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ArrowUpRight, Award, Globe, Heart, Lightbulb, Shield, Target, Users,
   TrendingUp, CheckCircle2, Camera, Coffee, Monitor, Smile, Star
@@ -56,16 +54,21 @@ export default function AboutPage() {
   const pageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
-        gsap.fromTo(el, { autoAlpha: 0, y: 36 }, {
-          autoAlpha: 1, y: 0, duration: 0.85, ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 84%" },
+    let ctx: { revert: () => void } | null = null;
+    (async () => {
+      const { default: gsap } = await import("gsap");
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      gsap.registerPlugin(ScrollTrigger);
+      ctx = gsap.context(() => {
+        gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
+          gsap.fromTo(el, { autoAlpha: 0, y: 36 }, {
+            autoAlpha: 1, y: 0, duration: 0.85, ease: "power3.out",
+            scrollTrigger: { trigger: el, start: "top 84%" },
+          });
         });
-      });
-    }, pageRef);
-    return () => ctx.revert();
+      }, pageRef);
+    })();
+    return () => { ctx?.revert(); };
   }, []);
 
   return (
